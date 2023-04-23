@@ -5,6 +5,9 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 
+// ROUTERS
+import postRoutes from "./routes/posts.js";
+
 // IMPORT ENV VARIABLES
 dotenv.config();
 
@@ -14,6 +17,7 @@ const app = express();
 // MIDDLEWARES
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+app.use("/posts", postRoutes);
 
 // DATABASE INFO
 const CONNECTION_URL = process.env.MONGODB_CONNECTION_URL;
